@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfotl21ktp61g"]
+
+[ext_resource type="Script" uid="uid://sq4piqyaq2xg" path="res://scenes/personaje.gd" id="1_2kcgv"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lgngo"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fw4w5"]
+
+[node name="personaje" type="CharacterBody3D"]
+script = ExtResource("1_2kcgv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_lgngo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_fw4w5")
+
+[node name="CamaraBoom" type="SpringArm3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0596743, 0.975564, 1.6195042)
+
+[node name="Camera3D" type="Camera3D" parent="CamaraBoom"]
+transform = Transform3D(1, 0, 0, 0, 0.98847014, 0.1514161, 0, -0.1514161, 0.98847014, 0, 0, 0)
+current = true
+fov = 68.3
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="CamaraBoom/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.21694648, 2.545947)

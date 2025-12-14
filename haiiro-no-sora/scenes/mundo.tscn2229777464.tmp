@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://c50egmxbpfj4l"]
+
+[ext_resource type="Script" uid="uid://sq4piqyaq2xg" path="res://scenes/personaje.gd" id="1_wqn8j"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xwo6f"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wqn8j"]
+points = PackedVector3Array(-1, 0, -1, -1, 0, 1, 1, 0, -1, 1, 0, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lgngo"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fw4w5"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="suelo" type="MeshInstance3D" parent="."]
+transform = Transform3D(6.861391, 0, 0, 0, 1, 0, 0, 0, 6.96874, 0, 0, 0)
+mesh = SubResource("PlaneMesh_xwo6f")
+
+[node name="suelo" type="StaticBody3D" parent="suelo"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="suelo/suelo"]
+shape = SubResource("ConvexPolygonShape3D_wqn8j")
+
+[node name="personaje" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0686898, 0)
+script = ExtResource("1_wqn8j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="personaje"]
+shape = SubResource("CapsuleShape3D_lgngo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="personaje"]
+mesh = SubResource("CapsuleMesh_fw4w5")
+
+[node name="CamaraBoom" type="SpringArm3D" parent="personaje"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.975564, 2.3975694)
+
+[node name="Camera3D" type="Camera3D" parent="personaje/CamaraBoom"]
+transform = Transform3D(1, 0, 0, 0, 0.98847014, 0.1514161, 0, -0.1514161, 0.98847014, 0, 0, 0)
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="personaje/CamaraBoom/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.21694648, 2.545947)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.249186, 2.5542595, -3.1252294)
+light_energy = 8.588
+light_indirect_energy = 1.99
+light_size = 0.784
