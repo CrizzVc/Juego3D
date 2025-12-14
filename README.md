@@ -1,0 +1,1 @@
+Este es un juego 3D que se llama "---". se realiza con el fin de adquirir experiencia en el uso de godot engine y en el desarrollo de videojuegos.
